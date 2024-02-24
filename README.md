@@ -9,11 +9,11 @@ struct Word {
 Part 1. Write a function that takes in an English sentence as one string. This function should first calculate how many “words” are in the sentence (words being substrings separated by whitespace). It should then allocate a dynamic array of size equal to the number of words. The array contains Word structures (i.e. array of type Word).  The function would then store each word of that sentence to the english field of the corresponding structure. The function should then return this array to the calling function using the return statement, along with the array size using a reference parameter.
 
 This function should also remove all capitalization and special characters other than letters. Implement the function with the following prototype
-
 Word * splitSentence(const string words, int &size);
-Part 2. Write a function that takes in an array of Word structures and the size of the array and converts each english field to the corresponding piglatin field.
 
+Part 2. Write a function that takes in an array of Word structures and the size of the array and converts each english field to the corresponding piglatin field.
 void convertToPigLatin(Word [] wordArr, int size);
+
 To do this conversion, if a word starts with a consonant, the piglatin conversion of the word involves moving the first letter of the word to the end of the string and then adding “ay” to the end.
 
 pig -> igpay
@@ -35,6 +35,8 @@ Example:
 
 Please enter a string to convert to PigLatin:
 Casino is nothing but a Goodfellas knockoff
-Output:oodfellasgay isway othingnay utbay away oodfellasgay nockoffkay 
-
+Output:
+oodfellasgay isway othingnay utbay away oodfellasgay nockoffkay 
 Error conditions: Your program should get rid of all punctuation and special characters other than letters. Your program should be able to deal with there being two or more spaces between words.
+
+Note: Make sure to follow proper programming style, as per the style supplement.
