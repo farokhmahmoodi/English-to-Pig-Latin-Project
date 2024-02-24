@@ -46,9 +46,42 @@ Your program should be able to deal with there being two or more spaces between 
 #include <sstream>
 using namespace std;
 
+struct Word
+{
+    string english;
+    string piglatin;
+};
+
+Word *wordCount(string, int&);
+
 int main()
 {
-    
+    int size;
+    string input = "pigs are really dumb";
+    Word* arr = nullptr;
+
+    arr = wordCount(input, size);
 
     return 0;
+}
+
+Word *wordCount(string s, int &size)
+{
+    Word* a = nullptr;
+    int count = 0;
+    istringstream istr(s), istr2(s);
+    string word;
+
+    for (int i = 0; i < s.length(); i++)
+        if (istr >> word)
+            count++;
+    size = count;
+    a = new Word[size];
+    for (int x = 0; x < count; x++)
+    {
+        istr2 >> word;
+        a[x].english = word;
+    }
+
+    return a;
 }
