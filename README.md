@@ -35,6 +35,6 @@ Example:
 
 Please enter a string to convert to PigLatin:
 Casino is nothing but a Goodfellas knockoff
-Output:
-oodfellasgay isway othingnay utbay away oodfellasgay nockoffkay 
+Output:oodfellasgay isway othingnay utbay away oodfellasgay nockoffkay 
+
 Error conditions: Your program should get rid of all punctuation and special characters other than letters. Your program should be able to deal with there being two or more spaces between words.
