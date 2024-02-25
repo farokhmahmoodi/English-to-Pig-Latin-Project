@@ -61,21 +61,32 @@ struct Word
 };
 
 Word *splitSentence(const string, int&);
+void convertToPigLatin(Word[], int);
+void displayPigLatin(const Word[], int);
 
 int main()
 {
     int size;
-    string input = "  Pigs    are reall1y DUdumb * ? 334 5675 ()) ",
-        wordsInput;
+    string input;
     Word* arr = nullptr;
+    char choice;
 
-    arr = splitSentence(input, size);
-    for (int i = 0; i < size; i++)
+    do
     {
-        cout << arr[i].english << " ";
-    }
-    cout << endl;
-
+        cout << "Please enter a string to convert to PigLatin:";
+        getline(cin, input);
+        arr = splitSentence(input, size);
+        convertToPigLatin(arr, size);
+        displayPigLatin(arr, size);       
+        do {
+            cout << "Would you like to enter another string to convert to Pig Latin? (Y for yes/N for no)";
+            cin >> choice;
+            if (toupper(choice) != 'Y' && toupper(choice) != 'N')
+                cout << "Invalid input for choice." << endl;
+        } while (toupper(choice) != 'Y' && toupper(choice) != 'N');
+        cin.ignore();
+    } while (toupper(choice) != 'N');
+    
     return 0;
 }
 
@@ -83,32 +94,77 @@ Word *splitSentence(const string words, int& size)
 {
     Word* a = nullptr;
     int count = 0;
-    istringstream istr(words), istr2(words);
-    string word;
+    istringstream istr(words), istr2;
+    string word, actual;
 
-    for (int i = 0; i < words.length(); i++)
+    for(int i = 0; i < words.length();i++)
+    {
         if (istr >> word)
-            count++;
+        {
+            for (int x = 0; x < word.length(); x++)
+            {
+                if (isalpha(word[x]))
+                {
+                    count++;
+                    actual += word;
+                    actual += " ";
+                    break;
+                }
+            }
+        }
+    }
     size = count;
     a = new Word[size];
-    for (int x = 0; x < size; x++)
+    istr2.str(actual);
+    for (int i = 0; i < size; i++)
     {
         istr2 >> word;
-        for(int y = 0; y < word.length(); y++)
+        for(int x = 0; x < word.length(); x++)
         { 
-            if (isalpha(word[y]))
+            if (isalpha(word[x]))
             {
-                if (isupper(word[y]))
+                if (isupper(word[x]))
                 {
-                    a[x].english += tolower(word[y]);
+                    a[i].english += tolower(word[x]);
                 }
                 else
                 {
-                    a[x].english += word[y];
+                    a[i].english += word[x];
                 }
             }
         }
     }
 
     return a;
+}
+
+void convertToPigLatin(Word wordArr[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        wordArr[i].piglatin = wordArr[i].english;
+        if (wordArr[i].english[0] == 'a' || wordArr[i].english[0] == 'e'
+            || wordArr[i].english[0] == 'i' || wordArr[i].english[0] == 'o'
+            || wordArr[i].english[0] == 'u')
+        {
+            wordArr[i].piglatin.append("way");
+        }
+        else
+        {
+            string temp;
+            temp = wordArr[i].english[0];
+            temp += "ay";
+            wordArr[i].piglatin.erase(0, 1);
+            wordArr[i].piglatin.append(temp);     
+        }
+    }
+}
+
+void displayPigLatin(const Word wordArr[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        cout << wordArr[i].piglatin << " ";
+    }
+    cout << endl;
 }
