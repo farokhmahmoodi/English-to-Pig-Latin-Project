@@ -15,6 +15,7 @@ along with the array size using a reference parameter.
 
 This function should also remove all capitalization and special characters other than letters. Implement the function with 
 the following prototype
+
 Word * splitSentence(const string words, int &size); 
 
 Part 2. Write a function that takes in an array of Word structures and the size of the array and converts each english 
@@ -59,27 +60,28 @@ struct Word
     string piglatin;
 };
 
-Word *wordCount(string, int&);
+Word *splitSentence(const string, int&);
 
 int main()
 {
     int size;
-    string input = "pigs are really dumb";
+    string input = "  Pigs    are reall1y DUdumb * ? 334 5675 ()) ",
+        wordsInput;
     Word* arr = nullptr;
 
-    arr = wordCount(input, size);
+    arr = splitSentence(input, size);
 
     return 0;
 }
 
-Word *wordCount(string s, int &size)
+Word *splitSentence(const string words, int& size)
 {
     Word* a = nullptr;
     int count = 0;
-    istringstream istr(s), istr2(s);
+    istringstream istr(words), istr2(words);
     string word;
 
-    for (int i = 0; i < s.length(); i++)
+    for (int i = 0; i < words.length(); i++)
         if (istr >> word)
             count++;
     size = count;
@@ -87,6 +89,11 @@ Word *wordCount(string s, int &size)
     for (int x = 0; x < count; x++)
     {
         istr2 >> word;
+        for(int y = 0; y < word.length(); y++)
+        { 
+
+
+        }
         a[x].english = word;
     }
 
