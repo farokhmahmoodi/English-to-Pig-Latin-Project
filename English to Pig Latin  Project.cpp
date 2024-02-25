@@ -70,6 +70,11 @@ int main()
     Word* arr = nullptr;
 
     arr = splitSentence(input, size);
+    for (int i = 0; i < size; i++)
+    {
+        cout << arr[i].english << " ";
+    }
+    cout << endl;
 
     return 0;
 }
@@ -86,15 +91,23 @@ Word *splitSentence(const string words, int& size)
             count++;
     size = count;
     a = new Word[size];
-    for (int x = 0; x < count; x++)
+    for (int x = 0; x < size; x++)
     {
         istr2 >> word;
         for(int y = 0; y < word.length(); y++)
         { 
-
-
+            if (isalpha(word[y]))
+            {
+                if (isupper(word[y]))
+                {
+                    a[x].english += tolower(word[y]);
+                }
+                else
+                {
+                    a[x].english += word[y];
+                }
+            }
         }
-        a[x].english = word;
     }
 
     return a;
