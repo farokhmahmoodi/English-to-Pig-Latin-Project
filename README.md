@@ -1,4 +1,4 @@
-Overview: This project is for testing the use of structures, arrays and string handling functions. In this assignment you will be prompting the user to enter an english sentence. The program will then convert it to the code Pig Latin . Your program will then output this Pig Latin to the screen.
+This project is for testing the use of structures, arrays and string handling functions.This program will be prompt the user to enter an english sentence. The program will then convert it to the code Pig Latin . Your program will then output this Pig Latin to the screen.
 
 Note: While there are many ways to do conversions to pig latin, I will require that you follow the procedures below, all of which will use the following structure: 
 
@@ -39,4 +39,3 @@ Output:
 oodfellasgay isway othingnay utbay away oodfellasgay nockoffkay 
 Error conditions: Your program should get rid of all punctuation and special characters other than letters. Your program should be able to deal with there being two or more spaces between words.
 
-Note: Make sure to follow proper programming style, as per the style supplement.
